@@ -1,0 +1,15 @@
+---
+# https://taskfile.dev
+version: '3'
+tasks:
+  build:
+    cmds:
+      - for: [asdfvm]
+        task: build-gen
+        vars:
+          MODULE: '{{.ITEM}}'
+  build-gen:
+    sources: ['./{{ .MODULE }}/*.go']
+    generates: ['./plugins/modules/{{.MODULE}}']
+    cmds:
+      - go build -C {{ .ROOT_DIR }}/{{.MODULE}} -o {{ .ROOT_DIR }}/plugins/modules/{{.MODULE}}

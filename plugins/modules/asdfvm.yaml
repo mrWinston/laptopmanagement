@@ -1,0 +1,33 @@
+DOCUMENTATION:
+  description: Module for managing software installations with the asdf version manager
+  module: asdfvm
+  short_description: Manage asdf-vm installation
+  version_added: 0.0.1
+  author: Marius Schulz
+  options:
+    name:
+      description: Name of the asdf plugin
+      required: true
+      type: string
+    url:
+      description: git url of the plugin
+      required: true
+      type: string
+    state:
+      description: desired state of the installation
+      required: true
+      choices:
+        - present
+        - absent
+        - latest
+      type: string
+    version:
+      description: version that should be installed
+      required: false
+      default: "latest"
+      type: string
+    default:
+      description: make this version as the global default
+      type: bool
+      required: false
+      default: true
